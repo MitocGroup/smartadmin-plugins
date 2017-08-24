@@ -199,7 +199,10 @@
             // TODO : Push state does not work on IE9, try to find a way to detect IE and use a seperate filter
 
 			if (self.o.ajaxnav === true) {
-				var widget_url = location.hash.replace(/^#/, '');
+                const hash = location.hash;
+                var widget_url = hash
+                    ? hash.replace(/^#/, '') 
+                    : location.pathname;
 				self.storage.keySettings = 'Plugin_settings_' + widget_url + '_' + self.objId;
 				self.storage.keyPosition = 'Plugin_position_' + widget_url + '_' + self.objId;
 			} else if (self.initialized === false) {
